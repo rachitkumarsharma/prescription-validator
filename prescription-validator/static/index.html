@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eye Prescription Validator</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Eye Prescription Validator</h1>
+    <p class="subtitle">Enter SPH, CYL and Axis for each eye, then validate.</p>
+
+    <div id="banner" class="banner hidden" role="status" aria-live="polite"></div>
+
+    <form id="rx-form" novalidate>
+      <div class="panels">
+        <fieldset class="panel right">
+          <legend>Right Eye (OD)</legend>
+          <div class="field">
+            <label for="right_eye-sph">SPH (Sphere)</label>
+            <input id="right_eye-sph" name="right_eye.sph" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. -2.00" aria-describedby="err-right_eye-sph">
+            <p class="error" id="err-right_eye-sph"></p>
+          </div>
+          <div class="field">
+            <label for="right_eye-cyl">CYL (Cylinder)</label>
+            <input id="right_eye-cyl" name="right_eye.cyl" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. -0.50" aria-describedby="err-right_eye-cyl">
+            <p class="error" id="err-right_eye-cyl"></p>
+          </div>
+          <div class="field">
+            <label for="right_eye-axis">Axis</label>
+            <input id="right_eye-axis" name="right_eye.axis" type="text" inputmode="numeric" autocomplete="off" placeholder="1 - 180" aria-describedby="err-right_eye-axis">
+            <p class="error" id="err-right_eye-axis"></p>
+          </div>
+        </fieldset>
+
+        <fieldset class="panel left">
+          <legend>Left Eye (OS)</legend>
+          <div class="field">
+            <label for="left_eye-sph">SPH (Sphere)</label>
+            <input id="left_eye-sph" name="left_eye.sph" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 1.25" aria-describedby="err-left_eye-sph">
+            <p class="error" id="err-left_eye-sph"></p>
+          </div>
+          <div class="field">
+            <label for="left_eye-cyl">CYL (Cylinder)</label>
+            <input id="left_eye-cyl" name="left_eye.cyl" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. -0.75" aria-describedby="err-left_eye-cyl">
+            <p class="error" id="err-left_eye-cyl"></p>
+          </div>
+          <div class="field">
+            <label for="left_eye-axis">Axis</label>
+            <input id="left_eye-axis" name="left_eye.axis" type="text" inputmode="numeric" autocomplete="off" placeholder="1 - 180" aria-describedby="err-left_eye-axis">
+            <p class="error" id="err-left_eye-axis"></p>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="actions">
+        <button type="submit" id="validate-btn" class="primary">Validate Prescription</button>
+        <button type="button" id="sample-btn">Load Sample</button>
+        <button type="button" id="reset-btn">Reset</button>
+      </div>
+    </form>
+
+    <section class="help" aria-labelledby="help-title">
+      <h2 id="help-title">Configured rules</h2>
+      <ul id="rules">
+        <li>SPH: -20.00 to +20.00, steps of 0.25</li>
+        <li>CYL: -10.00 to +10.00, steps of 0.25</li>
+        <li>Axis: integer 1&ndash;180; required only when CYL is not zero</li>
+      </ul>
+      <p class="note">These are application-defined plausibility limits for this demo, not universal clinical standards. No data is stored.</p>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
